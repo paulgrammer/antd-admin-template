@@ -91,18 +91,6 @@ class PageRoot extends ApiComponent<
         this.goToLogin()
     }
 
-    createUpdateAvailableIfNeeded() {
-        const self = this
-
-        return (
-            <Fragment>
-                <ClickableLink
-                    onLinkClicked={() => self.props.history.push('/settings')}
-                ></ClickableLink>
-            </Fragment>
-        )
-    }
-
     toggleSider = () => {
         StorageHelper.setSiderCollapsedStateInLocalStorage(
             !this.state.collapsed
@@ -230,14 +218,14 @@ class PageRoot extends ApiComponent<
                             defaultSelectedKeys={['users']}
                             style={{ height: '100%', borderRight: 0 }}
                         >
-                            {MENU_ITEMS.map((item) =>
+                            {MENU_ITEMS.map((item: any) =>
                                 item.subitems?.length ? (
                                     <Menu.SubMenu
                                         key={item.key}
                                         icon={item.icon}
                                         title={item.name}
                                     >
-                                        {item.subitems.map((subItem) => (
+                                        {item.subitems.map((subItem: any) => (
                                             <Menu.Item key={subItem.key}>
                                                 <Link
                                                     to={`/${subItem.key}`}
